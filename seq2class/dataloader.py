@@ -60,7 +60,6 @@ class DataLoader(object):
     def ZScoreNormalization(self, train_mode):
         if train_mode:
             with open('../cache/zscore_prob.txt', 'w') as file:
-                pass
                 mu = np.mean(self.train_prop1_data)
                 sigma = np.std(self.train_prop1_data)
                 self.train_prop1_data = (self.train_prop1_data - mu) / sigma
