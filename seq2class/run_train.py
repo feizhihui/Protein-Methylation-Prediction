@@ -7,7 +7,7 @@ from sequence_model import SeqModel
 batch_size = 256
 epoch_num = 5
 show_step = 200
-
+keep_prob = 0.75
 # ===================================
 
 loader = DataLoader()
@@ -33,7 +33,7 @@ with tf.Session() as sess:
 
             sess.run(model.train_op,
                      feed_dict={model.seq_data: batch_seq, model.prob1_data: batch_prob1, model.prob2_data: batch_prob2,
-                                model.label: batch_label})
+                                model.label: batch_label, model.keep_prob: keep_prob})
             if step % show_step == 0:
                 y_pred, batch_cost, batch_accuracy, auc = sess.run(
                     [model.prediction, model.cost, model.accuracy, model.auc_opt], feed_dict={model.seq_data: batch_seq,

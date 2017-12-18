@@ -33,7 +33,8 @@ with tf.Session() as sess:
         # auc op is updated in each run
         y_pred, logits, auc = sess.run([model.prediction, model.activation_logits, model.auc_opt],
                                        feed_dict={model.seq_data: batch_seq, model.prob1_data: batch_prob1,
-                                                  model.prob2_data: batch_prob2, model.label: batch_label})
+                                                  model.prob2_data: batch_prob2, model.label: batch_label,
+                                                  model.keep_prob: 1.0})
 
         pred_collection.extend(y_pred)
         logit_collection.extend(logits)

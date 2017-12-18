@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 
 n_hidden = 200
-keep_prob = 0.9
 
 sequence_lens = 6
 threshold = 0.5
@@ -18,6 +17,8 @@ class SeqModel(object):
         self.prob1_data = tf.placeholder(tf.float32, [None, sequence_lens])
         self.prob2_data = tf.placeholder(tf.float32, [None, sequence_lens])
         self.label = tf.placeholder(tf.int32, [None])
+
+        self.keep_prob = tf.placeholder(tf.float32, name="dropout_keep_prob")
 
         global_step = tf.Variable(0)
         learning_rate = tf.train.exponential_decay(init_learning_rate, global_step, decay_steps, decay_rate,
@@ -35,10 +36,10 @@ class SeqModel(object):
         # Current data input shape: (batch_size, n_steps, n_input)
         # Forward direction cell
         lstm_fw_cell = tf.contrib.rnn.GRUCell(n_hidden)
-        lstm_fw_cell = tf.contrib.rnn.DropoutWrapper(lstm_fw_cell, output_keep_prob=keep_prob)
+        lstm_fw_cell = tf.contrib.rnn.DropoutWrapper(lstm_fw_cell, output_keep_prob=self.keep_prob)
         # Backward direction cell
         lstm_bw_cell = tf.contrib.rnn.GRUCell(n_hidden)
-        lstm_bw_cell = tf.contrib.rnn.DropoutWrapper(lstm_bw_cell, output_keep_prob=keep_prob)
+        lstm_bw_cell = tf.contrib.rnn.DropoutWrapper(lstm_bw_cell, output_keep_prob=self.keep_prob)
         # network = rnn_cell.MultiRNNCell([lstm_fw_cell, lstm_bw_cell] * 3)
         # x shape is [batch_size, max_time, input_size]
         outputs, output_sate = tf.nn.bidirectional_dynamic_rnn(lstm_fw_cell, lstm_bw_cell, fusion_vector,
