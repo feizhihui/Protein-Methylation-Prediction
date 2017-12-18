@@ -30,7 +30,7 @@ with tf.Session() as sess:
         batch_prob2 = loader.train_prop2_data[index:index + batch_size]
         batch_label = loader.train_label[index:index + batch_size]
 
-        # auc op is updated in each run
+        # auc op is updated at each step
         y_pred, logits, auc = sess.run([model.prediction, model.activation_logits, model.auc_opt],
                                        feed_dict={model.seq_data: batch_seq, model.prob1_data: batch_prob1,
                                                   model.prob2_data: batch_prob2, model.label: batch_label,
