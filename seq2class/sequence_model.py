@@ -27,12 +27,11 @@ class SeqModel(object):
         W = tf.Variable(tf.truncated_normal([vocab_size, embedding_size], stddev=np.sqrt(2. / vocab_size)), name="W",
                         dtype=tf.float32)
         embedded_x = tf.nn.embedding_lookup(W, self.seq_data)
-        # print(input_x)
-        print(embedded_x)
+
         fusion_vector = tf.concat(
             [embedded_x, tf.reshape(self.prob1_data, [-1, sequence_lens, 1]),
              tf.reshape(self.prob2_data, [-1, sequence_lens, 1])], axis=2)
-        print(fusion_vector)
+
         # Current data input shape: (batch_size, n_steps, n_input)
         # Forward direction cell
         lstm_fw_cell = tf.contrib.rnn.GRUCell(n_hidden)
