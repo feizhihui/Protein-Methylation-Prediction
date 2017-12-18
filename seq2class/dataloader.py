@@ -25,7 +25,8 @@ class DataLoader(object):
         self.train_label = np.array(pos_label[:100000] + neg_label[:100000], np.int32)
         self.train_size = len(self.train_label)
 
-        self.normalize_prob(train_mode)
+        # self.MaxMinNormalization(train_mode)
+        self.ZScoreNormalization(train_mode)
 
     def shuffle(self):
         mark = list(range(self.train_size))
@@ -35,9 +36,9 @@ class DataLoader(object):
         self.train_prop2_data = self.train_prop2_data[mark]
         self.train_label = self.train_label[mark]
 
-    def normalize_prob(self, train_mode):
+    def MaxMinNormalization(self, train_mode):
         if train_mode:
-            with open('../cache/prob.txt', 'w') as file:
+            with open('../cache/maxmin_prob.txt', 'w') as file:
                 pass
                 min_v = np.min(self.train_prop1_data)
                 max_v = np.max(self.train_prop1_data)
@@ -48,13 +49,34 @@ class DataLoader(object):
                 self.train_prop2_data = (self.train_prop2_data - min_v) / (max_v - min_v)
                 file.write(str(min_v) + " " + str(max_v) + "\n")
         else:
-            with open('../cache/prob.txt', 'r') as file:
+            with open('../cache/maxmin_prob.txt', 'r') as file:
                 s = file.readline().split()
                 min_v, max_v = float(s[0]), float(s[1])
                 self.train_prop1_data = (self.train_prop1_data - min_v) / (max_v - min_v)
                 s = file.readline().split()
                 min_v, max_v = float(s[0]), float(s[1])
                 self.train_prop2_data = (self.train_prop2_data - min_v) / (max_v - min_v)
+
+    def ZScoreNormalization(self, train_mode):
+        if train_mode:
+            with open('../cache/zscore_prob.txt', 'w') as file:
+                pass
+                mu = np.mean(self.train_prop1_data)
+                sigma = np.std(self.train_prop1_data)
+                self.train_prop1_data = (self.train_prop1_data - mu) / sigma
+                file.write(str(mu) + " " + str(sigma) + "\n")
+                mu = np.mean(self.train_prop2_data)
+                sigma = np.std(self.train_prop2_data)
+                self.train_prop2_data = (self.train_prop2_data - mu) / sigma
+                file.write(str(mu) + " " + str(sigma) + "\n")
+        else:
+            with open('../cache/zscore_prob.txt', 'r') as file:
+                s = file.readline().split()
+                mu, sigma = float(s[0]), float(s[1])
+                self.train_prop1_data = (self.train_prop1_data - mu) / sigma
+                s = file.readline().split()
+                mu, sigma = float(s[0]), float(s[1])
+                self.train_prop2_data = (self.train_prop2_data - mu) / sigma
 
 
 if __name__ == '__main__':
