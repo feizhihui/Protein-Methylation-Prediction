@@ -29,17 +29,17 @@ with tf.Session() as sess:
         batch_prob1 = loader.train_prop1_data[index:index + batch_size]
         batch_prob2 = loader.train_prop2_data[index:index + batch_size]
         batch_label = loader.train_label[index:index + batch_size]
+
+        # auc op is updated in each run
         y_pred, logits, auc = sess.run([model.prediction, model.activation_logits, model.auc_opt],
                                        feed_dict={model.seq_data: batch_seq, model.prob1_data: batch_prob1,
                                                   model.prob2_data: batch_prob2, model.label: batch_label})
 
         pred_collection.extend(y_pred)
         logit_collection.extend(logits)
-
-        print(metrics.accuracy_score(batch_label, y_pred), auc)
         print('%d -- %d' % (step + 1, decay_steps))
 
-    print("accuracy: %.3f, auc: %.4f" % (
+    print("accuracy: %.3f, auc: %.6f" % (
         metrics.accuracy_score(loader.train_label, pred_collection),
         metrics.roc_auc_score(loader.train_label, logit_collection)))
     print("Precision %.6f" % metrics.precision_score(loader.train_label, pred_collection))
