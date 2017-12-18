@@ -35,6 +35,8 @@ with tf.Session() as sess:
 
         pred_collection.extend(y_pred)
         logit_collection.extend(logits)
+
+        print(metrics.accuracy_score(batch_label, y_pred), auc)
         print('%d -- %d' % (step + 1, decay_steps))
 
     print("accuracy: %.3f, auc: %.4f" % (
