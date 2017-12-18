@@ -46,4 +46,4 @@ with tf.Session() as sess:
     print("Recall %.6f" % metrics.recall_score(loader.train_label, pred_collection))
     print("F1-score %.6f" % metrics.f1_score(loader.train_label, pred_collection))
 
-    print(auc)
+    print('auc calculated in tensorflow:', auc)
