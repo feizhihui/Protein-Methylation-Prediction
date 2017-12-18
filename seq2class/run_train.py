@@ -39,7 +39,8 @@ with tf.Session() as sess:
                     [model.prediction, model.cost, model.accuracy, model.auc_opt], feed_dict={model.seq_data: batch_seq,
                                                                                               model.prob1_data: batch_prob1,
                                                                                               model.prob2_data: batch_prob2,
-                                                                                              model.label: batch_label})
+                                                                                              model.label: batch_label,
+                                                                                              model.keep_prob: 1.})
                 print("cost function: %.3f, accuracy: %.3f, auc: %.3f" % (batch_cost, batch_accuracy, auc))
                 print("Precision %.6f" % metrics.precision_score(batch_label, y_pred))
                 print("Recall %.6f" % metrics.recall_score(batch_label, y_pred))
