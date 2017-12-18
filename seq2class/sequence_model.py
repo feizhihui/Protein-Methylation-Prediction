@@ -46,7 +46,7 @@ class SeqModel(object):
                                                                sequence_length=tf.ones_like(self.label,
                                                                                             dtype=tf.int32) * sequence_lens,
                                                                dtype=tf.float32)  # tf bug
-        #
+
         # # outputs, output_sate = tf.nn.dynamic_rnn(lstm_bw_cell, x, dtype=tf.float32)
         # # shape is n*40*(n_hidden+n_hidden) because of forward + backward
         outputs = (outputs[0][:, -1, :], outputs[1][:, 0, :])
