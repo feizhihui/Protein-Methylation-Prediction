@@ -19,4 +19,7 @@ And it is a sequence classification task about protein methylation prediction.
 	mu = np.mean(self.train_prop1_data)
 	sigma = np.std(self.train_prop1_data)
 	self.train_prop1_data = (self.train_prop1_data - mu) / sigma
+	
+	with open('../cache/zscore_prob.txt', 'w') as file:
+		file.write(str(mu) + " " + str(sigma) + "\n")
 ```
