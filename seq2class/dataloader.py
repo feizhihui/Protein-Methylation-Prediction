@@ -17,12 +17,12 @@ class DataLoader(object):
         with open(neg_file_path, 'rb') as file:
             neg_train_seq_data, neg_train_prop1_data, neg_train_prop2_data, neg_label = pickle.load(file)
 
-        self.train_seq_data = np.array(pos_train_seq_data[:100000] + neg_train_seq_data[:100000], dtype=np.int32)
-        self.train_prop1_data = np.array(pos_train_prop1_data[:100000] + neg_train_prop1_data[:100000],
+        self.train_seq_data = np.array(pos_train_seq_data + neg_train_seq_data, dtype=np.int32)
+        self.train_prop1_data = np.array(pos_train_prop1_data + neg_train_prop1_data,
                                          dtype=np.float32)
-        self.train_prop2_data = np.array(pos_train_prop2_data[:100000] + neg_train_prop2_data[:100000],
+        self.train_prop2_data = np.array(pos_train_prop2_data + neg_train_prop2_data,
                                          dtype=np.float32)
-        self.train_label = np.array(pos_label[:100000] + neg_label[:100000], np.int32)
+        self.train_label = np.array(pos_label + neg_label, np.int32)
         self.train_size = len(self.train_label)
 
         # self.MaxMinNormalization(train_mode)
