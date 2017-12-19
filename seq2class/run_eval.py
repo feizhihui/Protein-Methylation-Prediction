@@ -15,6 +15,8 @@ init_learning_rate = 0.0005
 decay_rate = 0.96
 decay_steps = loader.train_size / batch_size
 
+print('Test dataset size:', loader.train_size)
+
 model = SeqModel(init_learning_rate, decay_steps, decay_rate)
 
 saver = tf.train.Saver()
