@@ -58,7 +58,7 @@ class DataLoader(object):
                 self.train_prop2_data = (self.train_prop2_data - min_v) / (max_v - min_v)
 
     def ZScoreNormalization(self, train_mode):
-        if train_mode:
+        if train_mode==False:
             with open('../cache/zscore_prob.txt', 'w') as file:
                 mu = np.mean(self.train_prop1_data)
                 sigma = np.std(self.train_prop1_data)
