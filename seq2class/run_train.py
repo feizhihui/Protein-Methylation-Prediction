@@ -5,7 +5,7 @@ from sklearn import metrics
 from sequence_model import SeqModel
 
 batch_size = 512
-epoch_num = 5
+epoch_num = 7
 show_step = 200
 keep_prob = 0.75
 # ===================================
