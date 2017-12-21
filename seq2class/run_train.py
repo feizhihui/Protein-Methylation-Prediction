@@ -8,10 +8,10 @@ import os
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
-batch_size = 256
+batch_size = 512
 epoch_num = 7
 show_step = 200
-keep_prob = 0.75
+keep_prob = 0.95
 # ===================================
 
 loader = DataLoader()
