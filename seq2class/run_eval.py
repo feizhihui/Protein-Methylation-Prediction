@@ -14,7 +14,7 @@ show_step = 200
 # ===================================
 
 loader = DataLoader(train_mode=False)
-init_learning_rate = 0
+init_learning_rate = 0.0
 decay_rate = 0.96
 decay_steps = loader.train_size / batch_size
 
