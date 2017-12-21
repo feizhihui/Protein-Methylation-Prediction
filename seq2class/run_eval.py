@@ -4,6 +4,10 @@ from dataloader import DataLoader
 from sklearn import metrics
 from sequence_model import SeqModel
 
+import os
+
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
 batch_size = 2048
 show_step = 200
 
