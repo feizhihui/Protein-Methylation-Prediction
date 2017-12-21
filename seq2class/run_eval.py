@@ -4,7 +4,7 @@ from dataloader import DataLoader
 from sklearn import metrics
 from sequence_model import SeqModel
 
-batch_size = 512
+batch_size = 2048
 show_step = 200
 
 # ===================================
