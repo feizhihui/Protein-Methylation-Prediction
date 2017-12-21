@@ -21,6 +21,13 @@ for file_path in file_path_list:
         total_prop2_data = total_prop2_data + train_prop2_data
         total_label = total_label + label
 
+mark = list(range(len(total_label)))
+np.random.shuffle(mark)
+total_train_seq_data = total_train_seq_data[mark]
+total_prop1_data = total_prop1_data[mark]
+total_prop2_data = total_prop2_data[mark]
+total_label = total_label[mark]
+
 total_lens = len(total_train_seq_data)
 train_eval_line = int(train_eval_rate * total_lens)
 
