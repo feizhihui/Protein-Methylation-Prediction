@@ -2,7 +2,7 @@
 import tensorflow as tf
 import numpy as np
 
-n_hidden = 200
+n_hidden = 256
 
 sequence_lens = 6
 threshold = 0.5
