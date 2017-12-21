@@ -6,11 +6,11 @@ import pickle
 class DataLoader(object):
     def __init__(self, train_mode=True):
         if train_mode:
-            pos_file_path = '../cache/train_pos_data.pkl'
-            neg_file_path = '../cache/train_neg_data.pkl'
+            file_path = '../cache/train_pos_data.pkl'
+
         else:
-            pos_file_path = '../cache/eval_pos_data.pkl'
-            neg_file_path = '../cache/eval_neg_data.pkl'
+            file_path = '../cache/eval_pos_data.pkl'
+
 
         with open(pos_file_path, 'rb') as file:
             pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data, pos_label = pickle.load(file)
