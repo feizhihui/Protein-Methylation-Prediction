@@ -6,23 +6,19 @@ import pickle
 class DataLoader(object):
     def __init__(self, train_mode=True):
         if train_mode:
-            file_path = '../cache/train_pos_data.pkl'
-
+            file_path = '../cache/mixed_train_data.pkl'
         else:
-            file_path = '../cache/eval_pos_data.pkl'
+            file_path = '../cache/mixed_eval_data.pkl'
 
+        with open(file_path, 'rb') as file:
+            train_seq_data, train_prop1_data, train_prop2_data, label = pickle.load(file)
 
-        with open(pos_file_path, 'rb') as file:
-            pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data, pos_label = pickle.load(file)
-        with open(neg_file_path, 'rb') as file:
-            neg_train_seq_data, neg_train_prop1_data, neg_train_prop2_data, neg_label = pickle.load(file)
-
-        self.train_seq_data = np.array(pos_train_seq_data + neg_train_seq_data, dtype=np.int32)
-        self.train_prop1_data = np.array(pos_train_prop1_data + neg_train_prop1_data,
+        self.train_seq_data = np.array(train_seq_data, dtype=np.int32)
+        self.train_prop1_data = np.array(train_prop1_data,
                                          dtype=np.float32)
-        self.train_prop2_data = np.array(pos_train_prop2_data + neg_train_prop2_data,
+        self.train_prop2_data = np.array(train_prop2_data,
                                          dtype=np.float32)
-        self.train_label = np.array(pos_label + neg_label, np.int32)
+        self.train_label = np.array(label, np.int32)
         self.train_size = len(self.train_label)
 
         # self.MaxMinNormalization(train_mode)

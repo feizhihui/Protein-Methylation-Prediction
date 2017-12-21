@@ -24,11 +24,15 @@ for file_path in file_path_list:
 total_lens = len(total_train_seq_data)
 train_eval_line = int(train_eval_rate * total_lens)
 
-with open('../cache/total_train_seq_data.pkl', 'wb') as file:
-    pickle.dump(total_train_seq_data, file)
-with open('../cache/total_prop1_data.pkl', 'wb') as file:
-    pickle.dump(total_prop1_data, file)
-with open('../cache/total_prop2_data.pkl', 'wb') as file:
-    pickle.dump(total_prop2_data, file)
-with open('../cache/total_label.pkl', 'wb') as file:
-    pickle.dump(total_label, file)
+train_data = (
+    total_train_seq_data[:train_eval_line], total_prop1_data[:train_eval_line], total_prop2_data[:train_eval_line],
+    total_label[:train_eval_line])
+
+eval_data = (
+    total_train_seq_data[train_eval_line:], total_prop1_data[train_eval_line:], total_prop2_data[train_eval_line:],
+    total_label[train_eval_line:])
+
+with open('../cache/mixed_train_data.pkl', 'wb') as file:
+    pickle.dump(train_data, file)
+with open('../cache/mixed_eval_data.pkl', 'wb') as file:
+    pickle.dump(eval_data, file)
