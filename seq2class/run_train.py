@@ -9,7 +9,7 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 batch_size = 512
-epoch_num = 7
+epoch_num = 5
 show_step = 200
 keep_prob = 0.75
 # ===================================
