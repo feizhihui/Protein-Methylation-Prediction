@@ -4,8 +4,10 @@ import numpy as np
 
 train_eval_rate = 0.9
 
-file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl', '../cache/eval_pos_data.pkl',
-                  '../cache/eval_neg_data.pkl']
+# file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl', '../cache/eval_pos_data.pkl',
+#                   '../cache/eval_neg_data.pkl']
+
+file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl']
 
 # read all data
 total_train_seq_data = []

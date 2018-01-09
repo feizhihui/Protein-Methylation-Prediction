@@ -3,20 +3,20 @@
 import pickle
 
 seq_set = set()
-with open('../data/NA12878.pcr_MSssI.r9.timp.081016.pass.nanopolish.cpgfeatures.tsv', 'r') as file:
+with open('../data/NA12878.pcr_MSssI.r9.timp.081016.pass.nanopolish.cpgfeatures.gama.tsv', 'r') as file:
     for line in file.readlines()[1:]:
         columns = line.split()
         for i in range(6):
-            seq = columns[4 + i * 3]
+            seq = columns[5 + i * 4]
             seq_set.add(seq)
 
 print(len(seq_set))
 
-with open('../data/NA12878.pcr.r9.timp.081016.pass.nanopolish.cpgfeatures.tsv', 'r') as file:
+with open('../data/NA12878.pcr.r9.timp.081016.pass.nanopolish.cpgfeatures.gama.tsv', 'r') as file:
     for line in file.readlines()[1:]:
         columns = line.split()
         for i in range(6):
-            seq = columns[4 + i * 3]
+            seq = columns[5 + i * 4]
             seq_set.add(seq)
 
 print(len(seq_set))
