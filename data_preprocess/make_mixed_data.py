@@ -4,10 +4,10 @@ import numpy as np
 
 train_eval_rate = 0.9
 
-# file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl', '../cache/eval_pos_data.pkl',
-#                   '../cache/eval_neg_data.pkl']
+file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl', '../cache/eval_pos_data.pkl',
+                  '../cache/eval_neg_data.pkl']
 
-file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl']
+# file_path_list = ['../cache/train_pos_data.pkl', '../cache/train_neg_data.pkl']
 
 # read all data
 total_train_seq_data = []
@@ -23,15 +23,16 @@ for file_path in file_path_list:
         total_prop2_data = total_prop2_data + train_prop2_data
         total_label = total_label + label
 
-mark = list(range(len(total_label)))
-np.random.shuffle(mark)
-total_train_seq_data = np.array(total_train_seq_data)[mark]
-total_prop1_data = np.array(total_prop1_data)[mark]
-total_prop2_data = np.array(total_prop2_data)[mark]
-total_label = np.array(total_label)[mark]
+# mark = list(range(len(total_label)))
+# np.random.shuffle(mark)
+# total_train_seq_data = np.array(total_train_seq_data)[mark]
+# total_prop1_data = np.array(total_prop1_data)[mark]
+# total_prop2_data = np.array(total_prop2_data)[mark]
+# total_label = np.array(total_label)[mark]
 
 total_lens = len(total_train_seq_data)
-train_eval_line = int(train_eval_rate * total_lens)
+# train_eval_line = int(train_eval_rate * total_lens)
+train_eval_line=len()
 
 train_data = (
     total_train_seq_data[:train_eval_line], total_prop1_data[:train_eval_line], total_prop2_data[:train_eval_line],
