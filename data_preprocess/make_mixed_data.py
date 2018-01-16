@@ -32,8 +32,8 @@ for file_path in file_path_list:
 
 total_lens = len(total_train_seq_data)
 # train_eval_line = int(train_eval_rate * total_lens)
-train_data_num = 7691445
-eval_data_num = 12151776
+train_data_num = 3895952
+eval_data_num = 5135324
 assert train_data_num + eval_data_num == total_lens
 train_eval_line = train_data_num
 
