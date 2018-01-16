@@ -34,7 +34,7 @@ def load_data(file_path):
 # ======================================================
 # make train data
 
-file_path = '../data/ecoli_er2925.pcr_MSssI.r9.timp.061716.all.fileter.50000.3250000.cpgfeatures.gama.tsv'
+file_path = '../data/ecoli_er2925.pcr_MSssI.r9.timp.061716.pass.fileter.50000.3250000.cpgfeatures.gama.tsv'
 
 pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data = load_data(file_path)
 print('positive data size:', len(pos_train_seq_data))
@@ -43,7 +43,7 @@ t = (pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data, [1] * len(p
 with open('../cache/train_pos_data.pkl', 'wb') as file:
     pickle.dump(t, file)
 
-file_path = '../data/ecoli_er2925.pcr.r9.timp.061716.all.filter.50000.3250000.cpgfeatures.gama.tsv'
+file_path = '../data/ecoli_er2925.pcr.r9.timp.061716.pass.filter.50000.3250000.cpgfeatures.gama.tsv'
 neg_train_seq_data, neg_train_prop1_data, neg_train_prop2_data = load_data(file_path)
 
 print('negative data size:', len(neg_train_seq_data))
@@ -54,7 +54,7 @@ with open('../cache/train_neg_data.pkl', 'wb') as file:
 # ======================================================
 # make test data
 
-file_path = '../data/NA12878.pcr_MSssI.r9.timp.081016.all.nanopolish.cpgfeatures.gama.tsv'
+file_path = '../data/NA12878.pcr_MSssI.r9.timp.081016.pass.nanopolish.cpgfeatures.gama.tsv'
 
 pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data = load_data(file_path)
 print('positive data size:', len(pos_train_seq_data))
@@ -63,7 +63,7 @@ t = (pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data, [1] * len(p
 with open('../cache/eval_pos_data.pkl', 'wb') as file:
     pickle.dump(t, file)
 
-file_path = '../data/NA12878.pcr.r9.timp.081016.all.nanopolish.cpgfeatures.gama.tsv'
+file_path = '../data/NA12878.pcr.r9.timp.081016.pass.nanopolish.cpgfeatures.gama.tsv'
 neg_train_seq_data, neg_train_prop1_data, neg_train_prop2_data = load_data(file_path)
 
 print('negative data size:', len(neg_train_seq_data))
