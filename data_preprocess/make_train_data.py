@@ -34,7 +34,7 @@ def load_data(file_path):
 # ======================================================
 # make train data
 
-file_path = '../data/ecoli_er2925.pcr.r9.timp.061716.all.filter.50000.3250000.cpgfeatures.gama.tsv'
+file_path = '../data/ecoli_er2925.pcr_MSssI.r9.timp.061716.all.fileter.50000.3250000.cpgfeatures.gama.tsv'
 
 pos_train_seq_data, pos_train_prop1_data, pos_train_prop2_data = load_data(file_path)
 print('positive data size:', len(pos_train_seq_data))
